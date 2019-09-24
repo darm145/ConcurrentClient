@@ -7,7 +7,7 @@ package edu.eci.arep;
 
 import java.net.URL;
 import java.util.ArrayList;
-
+import edu.eci.arep.ClientThreads;
 /**
  *
  * @author 2139997
@@ -17,13 +17,17 @@ public class Handler {
     public static void main(String[] args) throws Exception {
         URL url = new URL(args[0]);
         System.out.println(args[0]);
+        System.out.println(args[1]);
         ArrayList<ClientThreads> t = new ArrayList<ClientThreads>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < Integer.parseInt(args[1]); i++) {
             ClientThreads temp = new ClientThreads(url);
             t.add(temp);
             temp.start();
         }
-
+        for(ClientThreads cs:t){
+            cs.join();
+        }
+        
     }
 
 }
