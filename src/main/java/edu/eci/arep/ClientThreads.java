@@ -32,5 +32,8 @@ public class ClientThreads extends Thread{
       duration=end-start;
       System.out.println(TimeUnit.NANOSECONDS.toSeconds(duration));
     }
+  public long getDuration(){
+      return duration;
+  }
   
 }
